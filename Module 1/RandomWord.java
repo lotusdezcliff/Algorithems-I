@@ -7,7 +7,7 @@ public class RandomWord {
         String champion =  null;
         while (!StdIn.isEmpty()) {
             String word = StdIn.readString();
-            if (StdRandom.uniform(i) == 0) {
+            if (StdRandom.bernoulli(1.0 / i)) {
                 champion = word;
             }
             i++;
