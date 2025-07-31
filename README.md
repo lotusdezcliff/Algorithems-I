@@ -13,7 +13,7 @@ An open-source walkthrough of classic algorithmic techniques, geared for learner
 ## 🧪 How to Use
 Each algorithm includes:
 - ✅ A conceptual explanation
-- 🧠 Pseudocode and annotated source code (Python/Java)
+- 🧠 Pseudocode and annotated source code (Java)
 - 🧪 Test cases and sample inputs
 - 📎 Edge case notes and performance considerations
 
