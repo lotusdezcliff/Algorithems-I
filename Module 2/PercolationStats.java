@@ -1,6 +1,5 @@
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdRandom;
-import javax.swing.event.TreeWillExpandListener;
 
 public class PercolationStats {
     private final double[] results;
@@ -10,8 +9,8 @@ public class PercolationStats {
         for (int i = 0; i < trials; i++) {
             Percolation p = new Percolation(n);
             while (!p.percolates()) {
-                int row = StdRandom.uniform(n);
-                int col = StdRandom.uniform(n);
+                int row = StdRandom.uniformInt(n);
+                int col = StdRandom.uniformInt(n);
                 if (!p.isOpen(row, col)) {
                     p.open(row, col);
                 }
@@ -26,7 +25,7 @@ public class PercolationStats {
         for (int i = 0; i < results.length; i++) {
             sum += results[i];
         }
-        return (double) sum / results.length;
+        return sum / results.length;
     }
 
     // sample standard deviation of percolation threshold
@@ -35,17 +34,17 @@ public class PercolationStats {
         for (int i = 0; i < results.length; i++) {
             diffSum += (results[i] - mean()) * (results[i] - mean());
         }
-        return (double) Math.sqrt(diffSum / (results.length - 1));
+        return Math.sqrt(diffSum / (results.length - 1));
     }
 
     // low endpoint of 95% confidence interval
     public double confidenceLo() {
-        return (double) mean() - ((1.96 * stddev()) / Math.sqrt(results.length));
+        return mean() - ((1.96 * stddev()) / Math.sqrt(results.length));
     }
 
     // high endpoint of 95% confidence interval
     public double confidenceHi() {
-        return (double) mean() + ((1.96 * stddev()) / Math.sqrt(results.length));
+        return mean() + ((1.96 * stddev()) / Math.sqrt(results.length));
     }
 
    // test client (see below)
