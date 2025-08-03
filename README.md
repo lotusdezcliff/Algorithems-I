@@ -19,8 +19,5 @@ Each algorithm includes:
 
 Browse the folders by topic. Each module is self-contained with a README and examples.
 
-## 🤝 Contributions
-Feel free to fork, submit PRs, or raise issues if you spot bugs or want to add new algorithms. If you'd like to add explanations in 中文, please do! Let's make this globally helpful.
-
 ## 📚 License
 MIT License. Learn freely and share generously.
