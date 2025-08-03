@@ -35,12 +35,7 @@ public class Percolation {
         if (visited[row][col]) {
             return false;
         }
-        // directions
-        boolean up = row > 0 && grid[row - 1][col];
-        boolean down = row < grid.length - 1 && grid[row + 1][col];
-        boolean left = col > 0 && grid[row][col - 1];
-        boolean right = col < grid[0].length - 1 && grid[row][col + 1];
-
+        
         // edge case (exist path)
         if (row == 0) {
             return true;
