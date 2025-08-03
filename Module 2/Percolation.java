@@ -63,7 +63,15 @@ public class Percolation {
 
     // returns the number of open sites
     public int numberOfOpenSites() {
-
+        int counter = 0;
+        for (boolean[] row : grid) {
+            for (boolean site: row) {
+                if (site) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
     }
 
     // does the system percolate?
