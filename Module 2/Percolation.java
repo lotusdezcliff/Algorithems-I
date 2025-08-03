@@ -35,7 +35,7 @@ public class Percolation {
         if (visited[row][col]) {
             return false;
         }
-        
+
         // edge case (exist path)
         if (row == 0) {
             return true;
@@ -83,7 +83,7 @@ public class Percolation {
         perc.open(1, 2);
         perc.open(2, 2);
         perc.open(3, 2);
-        perc.open(4, 2);  // Now full path from top to bottom
+        perc.open(4, 3);  // Now full path from top to bottom
 
         System.out.println("Percolates? " + perc.percolates()); // Should print true
     }
