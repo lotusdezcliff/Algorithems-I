@@ -36,10 +36,10 @@ public class Percolation {
             return false;
         }
         // directions
-        boolean up = grid[row - 1][col];
-        boolean down = grid[row + 1][col];
-        boolean left = grid[row][col - 1];
-        boolean right = grid[row][col + 1];
+        boolean up = row > 0 && grid[row - 1][col];
+        boolean down = row < grid.length - 1 && grid[row + 1][col];
+        boolean left = col > 0 && grid[row][col - 1];
+        boolean right = col < grid[0].length - 1 && grid[row][col + 1];
 
         // edge case (exist path)
         if (row == 0) {
@@ -48,11 +48,6 @@ public class Percolation {
 
         // edge case (not a open site)
         if (isOpen(row, col) == false) {
-            return false;
-        }
-
-        // edge case (not exist)
-        if (!(up && down && left && right)) {
             return false;
         }
         
@@ -86,6 +81,16 @@ public class Percolation {
 
     // test client (optional)
     public static void main(String[] args) {
+        int N = 5;
+        Percolation perc = new Percolation(N);
 
+        perc.open(0, 2);
+        perc.open(1, 2);
+        perc.open(2, 2);
+        perc.open(3, 2);
+        perc.open(4, 2);  // Now full path from top to bottom
+
+        System.out.println("Percolates? " + perc.percolates()); // Should print true
     }
+
 }
