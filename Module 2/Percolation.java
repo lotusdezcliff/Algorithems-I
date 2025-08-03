@@ -1,8 +1,12 @@
 public class Percolation {
     private final boolean[][] grid;
     private boolean[][] visited;
+    private int openSitesCount;
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be positive");
+        }
         grid = new boolean[n][n];
         visited = new boolean[n][n];
         /* 
@@ -14,19 +18,29 @@ public class Percolation {
         }
         */
     }
-
+    
+    // Index checker
+    private void validateIndices(int row, int col) {
+    if (row < 1 || row > grid.length || col < 1 || col > grid.length) {
+        throw new IllegalArgumentException("Invalid Index");
+    }
+}
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
-        grid[row][col] = true;
+        validateIndices(row, col);
+        grid[row - 1][col - 1] = true;
+        openSitesCount++;
     }
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
-        return grid[row][col];
+        validateIndices(row, col);
+        return grid[row - 1][col - 1];
     }
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
+        validateIndices(row, col);
         // check the edge
         if (row < 0 || row >= grid.length || col < 0 || col >= grid.length) {
             return false;
@@ -42,7 +56,7 @@ public class Percolation {
         }
 
         // edge case (not a open site)
-        if (isOpen(row, col) == false) {
+        if (!isOpen(row, col)) {
             return false;
         }
         
@@ -53,15 +67,7 @@ public class Percolation {
 
     // returns the number of open sites
     public int numberOfOpenSites() {
-        int counter = 0;
-        for (boolean[] row : grid) {
-            for (boolean site: row) {
-                if (site) {
-                    counter++;
-                }
-            }
-        }
-        return counter;
+        return openSitesCount;
     }
 
     // does the system percolate?
@@ -76,8 +82,8 @@ public class Percolation {
 
     // test client (optional)
     public static void main(String[] args) {
-        int N = 5;
-        Percolation perc = new Percolation(N);
+        int n = 5;
+        Percolation perc = new Percolation(n);
 
         perc.open(0, 2);
         perc.open(1, 2);
