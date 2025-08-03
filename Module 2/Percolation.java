@@ -76,7 +76,12 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-
+        for (int i = 0; i < grid[0].length; i++) {
+            if (isFull(grid.length - 1, i)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // test client (optional)
